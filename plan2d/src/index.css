@@ -1,0 +1,70 @@
+﻿:root {
+  --bg: #1A1A1A;
+  --panel: #333333;
+  --text: #EAEAEA;
+  --text-2: #A0A0A0;
+  --border: #444444;
+  --accent: #98FF66;
+  /* Couleurs de repère pour traits sous labels */
+  --c-open: #98FF66;  /* vert */
+  --c-door: #FF5252;  /* rouge */
+  --c-pass: #FFD166;  /* jaune */
+  --c-blue: #66A8FF;  /* bleu */
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+.app-header {
+  height: 56px; display: flex; align-items: center; gap: 12px;
+  padding: 0 16px; border-bottom: 1px solid var(--border); background: #1A1A1A;
+}
+.logo { height: 28px; width: auto; object-fit: contain; }
+
+.layout { display: grid; grid-template-columns: 320px 1fr; height: calc(100% - 56px); }
+.side {
+  background: var(--panel); border-right: 1px solid var(--border);
+  padding: 16px; overflow: auto;
+}
+.field { display: grid; gap: 8px; margin-bottom: 16px; }
+.label { color: var(--text-2); font-size: 12px; }
+/* Barre colorée sous le label */
+.label-underline { height: 0.5px; width: 100%; border-radius: 0.5px; background: transparent; }
+.u-green { background: var(--c-open); }
+.u-red { background: var(--c-door); }
+.u-yellow { background: var(--c-pass); }
+.u-blue { background: var(--c-blue); }
+
+input[type="number"], input[type="text"], select {
+  background: #262626; color: var(--text); border: 1px solid var(--border);
+  padding: 8px 10px; border-radius: 6px; outline: none;
+}
+input[type="file"] { color-scheme: dark; }
+
+.actions { display: flex; gap: 8px; margin: 12px 0 8px; }
+button {
+  background: #2A2A2A; color: var(--text); border: 1px solid var(--border);
+  padding: 8px 12px; border-radius: 6px; cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.ghost { background: transparent; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+.zoom-row { display: flex; align-items: center; gap: 8px; }
+.zoom-val { width: 56px; text-align: center; color: var(--text-2); }
+
+.preview-wrap { position: relative; overflow: auto; background: #1A1A1A; }
+.preview {
+  transform-origin: 0 0; padding: 16px;
+}
+.placeholder {
+  color: var(--text-2); font-size: 13px; border: 1px dashed var(--border);
+  padding: 16px; border-radius: 8px;
+}
+
+.warn {
+  margin-top: 8px; color: #222; background: #FFD166; border: 1px solid #E0B94D;
+  padding: 8px 10px; border-radius: 6px; font-size: 12px;
+}
+.note { margin-top: 8px; color: var(--text-2); font-size: 12px; }

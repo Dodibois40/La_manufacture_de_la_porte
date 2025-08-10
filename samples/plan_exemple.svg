@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect x="0" y="0" width="800" height="600" fill="#1A1A1A"/>
+  <g>
+    <line x1="100" y1="300" x2="700" y2="300" stroke="#9E9E9E" stroke-width="1"/>
+    <text id="OUVERTURE_L" x="400" y="280" text-anchor="middle" fill="#98FF66" font-family="Consolas, monospace" font-size="24">902 mm</text>
+  </g>
+</svg>
