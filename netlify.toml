@@ -1,0 +1,7 @@
+[build]
+base = "plan2d"
+publish = "dist"
+command = "npm ci && npm run build"
+
+[build.environment]
+NODE_VERSION = "20"
