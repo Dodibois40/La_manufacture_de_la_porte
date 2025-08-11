@@ -12,6 +12,21 @@
   --c-blue: #66A8FF;  /* bleu */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root {
+  --bg: #1A1A1A;
+  --panel: #333333;
+  --text: #EAEAEA;
+  --text-2: #A0A0A0;
+  --border: #444444;
+  --accent: #98FF66;
+  /* Couleurs de repère pour traits sous labels */
+  --c-open: #98FF66;  /* vert */
+  --c-door: #FF5252;  /* rouge */
+  --c-pass: #FFD166;  /* jaune */
+  --c-blue: #66A8FF;  /* bleu */
+}
+
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
@@ -24,6 +39,8 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .logo { height: 28px; width: auto; object-fit: contain; }
 
 /* Home */
+.home { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+.home h1, .home h2, .home h3, .home h4, .home .btn { font-family: inherit; }
 /* Layout helpers */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 .muted { color: var(--text-2); }
