@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef, useState } from 'react'
 import './index.css'
+import builtinSvgUrl from './assets/12.svg?url'
 
 const LOGO_URL = 'https://firebasestorage.googleapis.com/v0/b/site-web-commande-panneaux.firebasestorage.app/o/Logo%2FSans-titre---2-%5BR%C3%A9cup%C3%A9r%C3%A9%5D.png?alt=media&token=857a8d48-d4a3-4533-86a5-2d62067b963e'
 
@@ -94,6 +95,7 @@ export default function App() {
   const [autoCadre, setAutoCadre] = useState<boolean>(true)
   const [linkWidths, setLinkWidths] = useState<boolean>(true)
   const [widthSource, setWidthSource] = useState<WidthKey>('PORTE_L')
+  const [svgUrl, setSvgUrl] = useState<string>('')
 
   function onOpenFile(file: File) {
     setWarning('')
@@ -152,6 +154,34 @@ export default function App() {
     }).catch(() => {
       setWarning('Erreur de lecture du fichier SVG.')
     })
+  }
+
+  async function onOpenUrl() {
+    setWarning('')
+    if (!svgUrl.trim()) {
+      setWarning('URL SVG vide.')
+      return
+    }
+    try {
+      const res = await fetch(svgUrl, { mode: 'cors' })
+      if (!res.ok) throw new Error('HTTP ' + res.status)
+      const text = await res.text()
+      // Réutiliser la logique d’ouverture fichier
+      onOpenFile(new File([text], 'remote.svg', { type: 'image/svg+xml' }))
+    } catch (e) {
+      setWarning('Impossible de charger le SVG depuis l’URL. Utilisez un lien de téléchargement direct (ex. Firebase « Get download URL ») et vérifiez les autorisations CORS.')
+    }
+  }
+
+  async function onOpenBuiltin() {
+    setWarning('')
+    try {
+      const res = await fetch(builtinSvgUrl)
+      const text = await res.text()
+      onOpenFile(new File([text], 'builtin.svg', { type: 'image/svg+xml' }))
+    } catch (e) {
+      setWarning('Impossible de charger le SVG intégré.')
+    }
   }
 
   function apply() {
@@ -283,6 +313,17 @@ export default function App() {
 
       <div className="layout">
         <aside className="side">
+          <div className="field">
+            <label className="label">Charger le SVG intégré</label>
+            <button type="button" onClick={onOpenBuiltin}>Ouvrir le gabarit intégré</button>
+          </div>
+
+          <div className="field">
+            <label className="label">Charger depuis URL</label>
+            <input type="text" value={svgUrl} onChange={e => setSvgUrl(e.target.value)} placeholder="https://.../fichier.svg" />
+            <button type="button" onClick={onOpenUrl}>Charger URL</button>
+          </div>
+
           <div className="field">
             <label className="label">Ouvrir SVG</label>
             <input type="file" accept="image/svg+xml" onChange={onFileInput} />
