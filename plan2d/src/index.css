@@ -32,6 +32,7 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .home h1, .home h2, .home h3, .home h4 { font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif; font-weight: 600; }
 /* Layout helpers */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.home .container { max-width: none; padding: 0 24px; }
 .muted { color: var(--text-2); }
 
 /* Nav */
@@ -67,7 +68,7 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .materials { padding:28px 0; border-bottom:1px solid var(--border); }
 .section-head h2 { margin:0 0 6px; }
 .section-head p { color:var(--text-2); margin:0 0 18px; }
-.swatches { display:grid; grid-template-columns: repeat(4, minmax(140px,1fr)); gap:16px; }
+.swatches { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:16px; }
 .swatch-card { background:#111; border:1px solid var(--border); border-radius:12px; padding:12px; }
 .swatch-chip { height:120px; border-radius:8px; border:1px solid var(--border); }
 .swatch-card h4 { margin:8px 0 0; font-size:14px; }
@@ -86,6 +87,12 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
   .features { grid-template-columns: 1fr; }
   .swatches { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .home .container { padding: 0 16px; }
+  .hero-left h1 { font-size: 36px; }
+  .door-slab { height: 220px; }
 }
 
 .layout { display: grid; grid-template-columns: 320px 1fr; height: calc(100% - 56px); }
