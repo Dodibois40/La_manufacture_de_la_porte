@@ -1,18 +1,4 @@
-﻿:root {
-  --bg: #1A1A1A;
-  --panel: #333333;
-  --text: #EAEAEA;
-  --text-2: #A0A0A0;
-  --border: #444444;
-  --accent: #98FF66;
-  /* Couleurs de repère pour traits sous labels */
-  --c-open: #98FF66;  /* vert */
-  --c-door: #FF5252;  /* rouge */
-  --c-pass: #FFD166;  /* jaune */
-  --c-blue: #66A8FF;  /* bleu */
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 :root {
   --bg: #1A1A1A;
   --panel: #333333;
@@ -39,7 +25,7 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .logo { height: 28px; width: auto; object-fit: contain; }
 
 /* Home */
-.home { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+.home { font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
 .home h1, .home h2, .home h3, .home h4, .home .btn { font-family: inherit; }
 /* Layout helpers */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
@@ -60,7 +46,7 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 /* Hero */
 .hero { background: radial-gradient(60% 80% at 20% 10%, #222 0%, rgba(26,26,26,0) 60%), #1A1A1A; border-bottom:1px solid var(--border); }
 .hero-inner { display:grid; grid-template-columns: 1.2fr 1fr; gap:32px; padding:48px 0; }
-.hero-left h1 { margin:0 0 16px; font-size: 44px; line-height: 1.1; }
+.hero-left h1 { margin:0 0 16px; font-size: 44px; line-height: 1.1; font-weight:700; letter-spacing:-0.02em; }
 .hero-sub { color: var(--text-2); margin: 0 0 18px; }
 .hero-cta { display:flex; gap:10px; margin: 8px 0 18px; }
 .hero-badges { display:flex; gap:12px; color:var(--text-2); font-size:12px; flex-wrap:wrap; }
