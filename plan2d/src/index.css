@@ -61,22 +61,22 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .door-info strong { color:var(--text); font-size:18px; display:block; }
 
 /* Features */
-.features { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; padding:28px 0; border-bottom:1px solid var(--border); }
-.feature { background:#111; border:1px solid var(--border); border-radius:12px; padding:16px; }
+.features { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:18px; padding:28px 0; border-bottom:1px solid var(--border); }
+.feature { background:#111; border:1px solid var(--border); border-radius:12px; padding:16px; max-width: 420px; justify-self: center; }
 .feature .ico { width:24px; height:24px; border-radius:6px; border:1px solid var(--border); margin-bottom:10px; }
 
 /* Materials */
 .materials { padding:28px 0; border-bottom:1px solid var(--border); }
 .section-head h2 { margin:0 0 6px; }
 .section-head p { color:var(--text-2); margin:0 0 18px; }
-.swatches { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:16px; }
-.swatch-card { background:#111; border:1px solid var(--border); border-radius:12px; padding:12px; }
-.swatch-chip { height:120px; border-radius:8px; border:1px solid var(--border); }
+.swatches { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:18px; }
+.swatch-card { background:#111; border:1px solid var(--border); border-radius:12px; padding:12px; max-width: 420px; justify-self: center; }
+.swatch-chip { width:100%; aspect-ratio: 4 / 3; border-radius:8px; border:1px solid var(--border); }
 .swatch-card h4 { margin:8px 0 0; font-size:14px; }
 
 /* Steps */
-.steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; padding:28px 0; border-bottom:1px solid var(--border); }
-.step { background:#111; border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; gap:12px; }
+.steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:18px; padding:28px 0; border-bottom:1px solid var(--border); }
+.step { background:#111; border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; gap:12px; max-width: 520px; justify-self: center; }
 .step-num { font-weight:700; color:var(--accent); }
 
 /* Footer */
