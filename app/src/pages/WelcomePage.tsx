@@ -16,11 +16,13 @@ export default function WelcomePage() {
   }, [])
 
   const handleGoToTutorial = () => {
-    window.location.hash = '#tutorial'
+    // Pour l'instant, rediriger vers la page d'accueil
+    window.location.hash = '#home'
   }
 
   const handleGoToConfig = () => {
-    window.location.hash = '#config'
+    // Pour l'instant, rediriger vers la page d'accueil  
+    window.location.hash = '#home'
   }
 
   const getRoleIcon = (role: string) => {
