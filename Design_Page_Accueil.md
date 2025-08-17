@@ -131,9 +131,26 @@ Configuration et commande en ligne
 - **Accent clair** : #E6A85C (bronze doré) ✅
 - **Effets glow** : rgba(205, 127, 50, 0.3) ✅
 - **Shimmer** : rgba(230, 168, 92, 0.2) ✅
+- **Logo officiel** : Intégré avec effets bronze ✅
 - Typographie moderne (Plus Jakarta Sans)
 - Bouton CTA avec effet glow bronze
 - Badges flottants stylisés
+
+### 🎨 Logo Intégré
+- **Format** : SVG optimisé
+- **Couleur** : Bronze #CD7F32
+- **Effets** : Drop-shadow bronze + glow au survol
+- **Taille** : 40x40px avec scale 1.1 au hover
+- **Animation** : Transition fluide 0.3s
+
+### ✨ Texture Bronze Artisanale Ajoutée
+- **Gradients multicouches** : #B8722C → #CD7F32 → #E6A85C
+- **Effets de grain** : Radial gradients superposés
+- **Texte accent** : Background-clip avec texture
+- **Bouton CTA** : Bordure texturée + fond multicouche
+- **Logo** : Multiple drop-shadows pour effet métallique
+- **Badges** : Overlay bronze au hover
+- **Profondeur visuelle** : Ombres et reflets authentiques
 
 ### ✅ Responsive Design
 - Adaptation mobile/tablette

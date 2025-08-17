@@ -1,5 +1,6 @@
 import './index.css'
 import { useState, useEffect } from 'react'
+import logoSvg from './assets/logo.svg'
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false)
@@ -29,8 +30,7 @@ export default function Home() {
            onMouseEnter={() => setShowMenu(true)}
            onMouseLeave={() => setShowMenu(false)}>
         <div className="gaming-logo">
-          <div className="logo-mark"></div>
-          <span className="logo-text">LM</span>
+          <img src={logoSvg} alt="La Manufacture de la Porte" className="logo-svg" />
         </div>
         
         {/* Gaming Menu */}
@@ -56,7 +56,7 @@ export default function Home() {
           <div className="slogan-container">
             <h1 className="main-slogan">
               Configurez votre porte,<br />
-              <span className="accent-text">nous la façonnons</span>
+              <span className="accent-text" data-text="nous la façonnons">nous la façonnons</span>
             </h1>
             <p className="sub-slogan">Fabrication artisanale • Pays Basque (64)</p>
           </div>
