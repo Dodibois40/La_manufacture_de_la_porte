@@ -107,14 +107,27 @@ export default function WelcomePage() {
             </div>
           </div>
 
-          {/* Animation de porte décorative */}
-          <div className="decorative-door">
-            <svg viewBox="0 0 120 200" className="door-svg">
-              <rect className="door-frame" x="10" y="10" width="100" height="180" />
-              <rect className="door-panel" x="15" y="15" width="90" height="170" />
-              <circle className="door-handle" cx="85" cy="100" r="3" />
-              <line className="door-detail" x1="20" y1="40" x2="95" y2="40" />
-              <line className="door-detail" x1="20" y1="160" x2="95" y2="160" />
+          {/* Animation de porte qui se dessine */}
+          <div className="welcome-door-animation">
+            <svg viewBox="0 0 260 500" className="welcome-door-svg">
+              {/* Montant gauche */}
+              <rect className="draw-line montant-left" x="20" y="30" width="15" height="450" />
+              
+              {/* Montant droit */}
+              <rect className="draw-line montant-right" x="225" y="30" width="15" height="450" />
+              
+              {/* Traverse haute */}
+              <rect className="draw-line traverse-top" x="35" y="30" width="190" height="15" />
+              
+              {/* Porte */}
+              <rect className="draw-line door" x="38" y="48" width="184" height="429" />
+              
+              {/* Poignée */}
+              <line className="draw-line handle" x1="55" y1="260" x2="75" y2="260" />
+              
+              {/* Détails décoratifs */}
+              <rect className="draw-line detail-1" x="50" y="80" width="160" height="2" />
+              <rect className="draw-line detail-2" x="50" y="420" width="160" height="2" />
             </svg>
           </div>
         </div>
