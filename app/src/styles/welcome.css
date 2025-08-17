@@ -271,74 +271,72 @@
     0 0 40px rgba(100, 255, 150, 0.1);
 }
 
-/* 🚪 Animation de porte qui se dessine */
-.welcome-door-animation {
-  margin: 2rem auto;
+/* 🚪✨ Animation Porte Néon Bronze */
+.door-neon-container {
   width: 200px;
   height: 380px;
+  position: relative;
+  margin: 2rem auto;
   opacity: 0;
   animation: doorFadeIn 1s ease-out 1.2s forwards;
 }
 
 @keyframes doorFadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 0.6; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.welcome-door-svg {
+.door-neon-container svg {
+  filter: drop-shadow(0 0 8px rgba(201, 169, 97, 0.08));
   width: 100%;
   height: 100%;
 }
 
-/* Animation de porte spécifique à la page de bienvenue */
-.welcome-door-animation .draw-line {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: drawWelcomeDoor 6s ease-out 1.5s forwards;
-  stroke: rgba(255, 255, 255, 0.3);
-  stroke-width: 1.5;
+.neon-line {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: neonDraw 5s ease-out 1.5s forwards;
+  stroke: #c9a961;
+  stroke-width: 1;
   fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  filter: drop-shadow(0 0 2px #ddb678) 
+          drop-shadow(0 0 4px rgba(184, 134, 11, 0.4));
+  opacity: 0.95;
 }
 
-@keyframes drawWelcomeDoor {
-  to { 
+@keyframes neonDraw {
+  0% {
+    stroke-dashoffset: 3000;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  100% {
     stroke-dashoffset: 0;
-    stroke: rgba(255, 255, 255, 0.4);
+    opacity: 0.95;
   }
 }
 
-/* Délais d'animation pour chaque élément - page de bienvenue */
-.welcome-door-animation .montant-left { 
-  animation-delay: 1.5s;
-  stroke-width: 2;
+/* Délais d'animation pour chaque élément */
+.door-neon-container .montant-left { 
+  animation-delay: 1.5s; 
 }
-.welcome-door-animation .montant-right { 
-  animation-delay: 2s;
-  stroke-width: 2;
+.door-neon-container .montant-right { 
+  animation-delay: 2s; 
 }
-.welcome-door-animation .traverse-top { 
-  animation-delay: 2.5s;
-  stroke-width: 2;
+.door-neon-container .traverse-top { 
+  animation-delay: 2.5s; 
 }
-.welcome-door-animation .door { 
-  animation-delay: 3s;
-  fill: rgba(255, 255, 255, 0.02);
+.door-neon-container .door { 
+  animation-delay: 3s; 
+}
+.door-neon-container .handle { 
+  animation-delay: 3.5s; 
   stroke-width: 1.5;
-}
-.welcome-door-animation .handle { 
-  animation-delay: 4s;
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-.welcome-door-animation .detail-1 { 
-  animation-delay: 4.5s;
-  stroke-width: 1;
-}
-.welcome-door-animation .detail-2 { 
-  animation-delay: 5s;
-  stroke-width: 1;
+  stroke: #ddb678;
+  filter: drop-shadow(0 0 2px #ddb678)
+          drop-shadow(0 0 4px rgba(184, 134, 11, 0.4));
 }
 
 /* 📱 Footer */
@@ -415,7 +413,7 @@
     font-size: 2rem;
   }
 
-  .welcome-door-animation {
+  .door-neon-container {
     width: 160px;
     height: 300px;
     margin: 1.5rem auto;
@@ -449,7 +447,7 @@
     font-size: 0.8rem;
   }
 
-  .welcome-door-animation {
+  .door-neon-container {
     width: 120px;
     height: 240px;
     margin: 1rem auto;

@@ -107,27 +107,23 @@ export default function WelcomePage() {
             </div>
           </div>
 
-          {/* Animation de porte qui se dessine */}
-          <div className="welcome-door-animation">
-            <svg viewBox="0 0 260 500" className="welcome-door-svg">
+          {/* Animation de porte néon bronze */}
+          <div className="door-neon-container">
+            <svg viewBox="0 0 260 500">
               {/* Montant gauche */}
-              <rect className="draw-line montant-left" x="20" y="30" width="15" height="450" />
+              <rect className="neon-line montant-left" x="20" y="30" width="15" height="450" />
               
               {/* Montant droit */}
-              <rect className="draw-line montant-right" x="225" y="30" width="15" height="450" />
+              <rect className="neon-line montant-right" x="225" y="30" width="15" height="450" />
               
               {/* Traverse haute */}
-              <rect className="draw-line traverse-top" x="35" y="30" width="190" height="15" />
+              <rect className="neon-line traverse-top" x="35" y="30" width="190" height="15" />
               
               {/* Porte */}
-              <rect className="draw-line door" x="38" y="48" width="184" height="429" />
+              <rect className="neon-line door" x="38" y="48" width="184" height="429" />
               
               {/* Poignée */}
-              <line className="draw-line handle" x1="55" y1="260" x2="75" y2="260" />
-              
-              {/* Détails décoratifs */}
-              <rect className="draw-line detail-1" x="50" y="80" width="160" height="2" />
-              <rect className="draw-line detail-2" x="50" y="420" width="160" height="2" />
+              <line className="neon-line handle" x1="55" y1="260" x2="75" y2="260" />
             </svg>
           </div>
         </div>
