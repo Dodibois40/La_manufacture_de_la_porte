@@ -71,11 +71,16 @@ export default function LoginPage() {
                   type="text"
                   value={accessCode}
                   onChange={handleCodeChange}
-                  className={`access-input ${error ? 'error' : ''}`}
-                  placeholder="Entrez votre code"
+                  className={`access-input ${error ? 'error' : ''} ${isLoading ? 'loading' : ''}`}
+                  placeholder="Entrez votre code et appuyez sur Entrée"
                   autoFocus
                   maxLength={20}
                   disabled={isLoading}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && accessCode.trim()) {
+                      handleSubmit(e)
+                    }
+                  }}
                 />
               </div>
 
@@ -84,18 +89,6 @@ export default function LoginPage() {
                   {error}
                 </div>
               )}
-
-              <button 
-                type="submit" 
-                className={`access-button ${isLoading ? 'loading' : ''}`}
-                disabled={!accessCode.trim() || isLoading}
-              >
-                {isLoading ? (
-                  <span className="loading-spinner"></span>
-                ) : (
-                  'Accéder au site'
-                )}
-              </button>
             </form>
 
             <button 
