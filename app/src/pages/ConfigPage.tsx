@@ -20,7 +20,7 @@ export default function ConfigPage() {
   const [values, setValues] = useState<Record<string, string>>({ OUVERTURE_L: '902', COUVRE_JOINT_E: String(CJ_MIN) })
   const [presentIds, setPresentIds] = useState<Set<string>>(new Set<string>())
   const [warning, setWarning] = useState<string>('')
-  const [zoom, setZoom] = useState<number>(1)
+  const [zoom, setZoom] = useState<number>(0.9)
   const [autoCadre, setAutoCadre] = useState<boolean>(true)
   const [linkWidths, setLinkWidths] = useState<boolean>(true)
   const [widthSource, setWidthSource] = useState<WidthKey>('PORTE_L')
@@ -30,6 +30,14 @@ export default function ConfigPage() {
     setWarning('')
     file.text().then(text => {
       const doc = new DOMParser().parseFromString(text, 'image/svg+xml')
+      
+      // Vérifier s'il y a des erreurs de parsing
+      const parseError = doc.querySelector('parsererror')
+      if (parseError) {
+        setWarning('Erreur de parsing du SVG: ' + parseError.textContent)
+        return
+      }
+      
       svgDocRef.current = doc
 
       // Détecter images non intégrées
@@ -78,10 +86,17 @@ export default function ConfigPage() {
       setPresentIds(newPresent)
       setValues(newValues)
 
-      const serialized = new XMLSerializer().serializeToString(doc.documentElement)
+      // Ajouter des styles pour améliorer la visibilité
+      const svgElement = doc.documentElement as SVGSVGElement
+      svgElement.style.maxWidth = '100%'
+      svgElement.style.height = 'auto'
+      svgElement.style.display = 'block'
+      
+      const serialized = new XMLSerializer().serializeToString(svgElement)
       setSvgString(serialized)
-    }).catch(() => {
-      setWarning('Erreur de lecture du fichier SVG.')
+    }).catch((error) => {
+      console.error('Erreur de lecture du fichier SVG:', error)
+      setWarning('Erreur de lecture du fichier SVG: ' + error.message)
     })
   }
 
@@ -106,12 +121,17 @@ export default function ConfigPage() {
     setWarning('')
     try {
       const res = await fetch(builtinSvgUrl)
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      }
       const text = await res.text()
       onOpenFile(new File([text], 'builtin.svg', { type: 'image/svg+xml' }))
     } catch (e) {
-      setWarning('Impossible de charger le SVG intégré.')
+      setWarning(`Impossible de charger le SVG intégré: ${e instanceof Error ? e.message : 'Erreur inconnue'}`)
     }
   }
+
+
 
   function apply() {
     const doc = svgDocRef.current
@@ -339,7 +359,18 @@ export default function ConfigPage() {
         <main className="preview-wrap">
           <div
             className="preview"
-            style={{ transform: `scale(${zoom})` }}
+            style={{ 
+              transform: `scale(${zoom})`,
+              transformOrigin: 'center center',
+              backgroundColor: 'transparent',
+              padding: '20px',
+              overflow: 'auto',
+              minHeight: '600px',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
             dangerouslySetInnerHTML={{ __html: svgString || '<div class="placeholder">Aucun SVG chargé</div>' }}
           />
         </main>
