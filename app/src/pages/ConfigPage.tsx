@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState } from 'react'
 import builtinSvgUrl from '/12.svg?url'
-import { LOGO_URL, CJ_MIN, CJ_MAX } from '../utils/constants'
+import logoImg from '@assets/images/logo_transparent.png'
+import { CJ_MIN, CJ_MAX } from '../utils/constants'
 import { TOKEN_SPECS, type WidthKey } from '../types'
 import { 
   replaceFirstNumber, 
@@ -258,7 +259,7 @@ export default function ConfigPage() {
   return (
     <div className="app">
       <header className="app-header">
-        <img src={LOGO_URL} alt="Logo" className="logo"/>
+        <img src={logoImg} alt="Logo" className="logo"/>
         <h1>La Manufacture de la porte intérieur</h1>
       </header>
 
