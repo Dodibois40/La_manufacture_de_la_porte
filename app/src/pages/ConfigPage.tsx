@@ -87,10 +87,12 @@ export default function ConfigPage() {
       setValues(newValues)
 
       // Ajouter des styles pour améliorer la visibilité
-      const svgElement = doc.documentElement as SVGSVGElement
-      svgElement.style.maxWidth = '100%'
-      svgElement.style.height = 'auto'
-      svgElement.style.display = 'block'
+      const svgElement = doc.documentElement
+      if (svgElement instanceof SVGSVGElement) {
+        svgElement.style.maxWidth = '100%'
+        svgElement.style.height = 'auto'
+        svgElement.style.display = 'block'
+      }
       
       const serialized = new XMLSerializer().serializeToString(svgElement)
       setSvgString(serialized)
