@@ -57,6 +57,11 @@
   filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.1));
 }
 
+.logo-wrapper:not(.logo-clicked):hover .login-logo {
+  animation-play-state: paused;
+  transform: scale(1.02);
+}
+
 .logo-wrapper.logo-clicked {
   transform: scale(0.8) translateY(-20px);
   filter: drop-shadow(0 5px 20px rgba(255, 255, 255, 0.08));
@@ -68,6 +73,35 @@
   height: auto;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
   transition: all 0.4s ease;
+  animation: logoHeartbeat 4s ease-in-out infinite;
+}
+
+/* 💓 Animation battement de cœur du logo */
+@keyframes logoHeartbeat {
+  0% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+  }
+  7% { 
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.15));
+  }
+  14% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+  }
+  21% { 
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.2));
+  }
+  28% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+  }
+  100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+  }
 }
 
 /* 💡 Indication de clic */
