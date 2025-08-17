@@ -178,24 +178,48 @@
   height: 100%;
 }
 
-.draw-line {
+/* Animation de porte spécifique à la page d'accueil */
+.door-animation-container .draw-line {
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
   animation: drawDoor 5s ease-out forwards;
   stroke: var(--accent);
   stroke-width: 1.5;
   fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @keyframes drawDoor {
-  to { stroke-dashoffset: 0; }
+  to { 
+    stroke-dashoffset: 0;
+    stroke: var(--brass-metallic);
+    filter: drop-shadow(0 0 8px var(--gaming-glow));
+  }
 }
 
-.montant-left { animation-delay: 0s; }
-.montant-right { animation-delay: 0.5s; }
-.traverse-top { animation-delay: 1s; }
-.door { animation-delay: 1.5s; }
-.handle { animation-delay: 2s; stroke-width: 2; }
+/* Délais d'animation spécifiques à la page d'accueil */
+.door-animation-container .montant-left { 
+  animation-delay: 0s; 
+  stroke-width: 2;
+}
+.door-animation-container .montant-right { 
+  animation-delay: 0.5s; 
+  stroke-width: 2;
+}
+.door-animation-container .traverse-top { 
+  animation-delay: 1s; 
+  stroke-width: 2;
+}
+.door-animation-container .door { 
+  animation-delay: 1.5s;
+  fill: rgba(218, 165, 32, 0.05);
+}
+.door-animation-container .handle { 
+  animation-delay: 2s; 
+  stroke-width: 3;
+  stroke-linecap: round;
+}
 
 /* Gaming Footer */
 .gaming-footer {

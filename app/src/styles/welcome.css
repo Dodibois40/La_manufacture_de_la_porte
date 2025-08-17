@@ -290,7 +290,8 @@
   height: 100%;
 }
 
-.draw-line {
+/* Animation de porte spécifique à la page de bienvenue */
+.welcome-door-animation .draw-line {
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
   animation: drawWelcomeDoor 6s ease-out 1.5s forwards;
@@ -308,34 +309,34 @@
   }
 }
 
-/* Délais d'animation pour chaque élément */
-.montant-left { 
+/* Délais d'animation pour chaque élément - page de bienvenue */
+.welcome-door-animation .montant-left { 
   animation-delay: 1.5s;
   stroke-width: 2;
 }
-.montant-right { 
+.welcome-door-animation .montant-right { 
   animation-delay: 2s;
   stroke-width: 2;
 }
-.traverse-top { 
+.welcome-door-animation .traverse-top { 
   animation-delay: 2.5s;
   stroke-width: 2;
 }
-.door { 
+.welcome-door-animation .door { 
   animation-delay: 3s;
   fill: rgba(255, 255, 255, 0.02);
   stroke-width: 1.5;
 }
-.handle { 
+.welcome-door-animation .handle { 
   animation-delay: 4s;
   stroke-width: 3;
   stroke-linecap: round;
 }
-.detail-1 { 
+.welcome-door-animation .detail-1 { 
   animation-delay: 4.5s;
   stroke-width: 1;
 }
-.detail-2 { 
+.welcome-door-animation .detail-2 { 
   animation-delay: 5s;
   stroke-width: 1;
 }
