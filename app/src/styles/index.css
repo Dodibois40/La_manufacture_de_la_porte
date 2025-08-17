@@ -1,0 +1,4 @@
+/* Import de tous les styles dans l'ordre */
+@import './globals.css';
+@import './components.css';
+@import './pages.css';

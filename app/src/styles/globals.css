@@ -1,0 +1,29 @@
+/* Import des variables */
+@import './variables.css';
+
+/* Reset et styles globaux */
+* { 
+  box-sizing: border-box; 
+}
+
+html, body, #root { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  background: var(--bg); 
+  color: var(--text); 
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; 
+}
+
+/* Layout utilitaires */
+.container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 16px; 
+}
+
+.muted { 
+  color: var(--text-2); 
+}

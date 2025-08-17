@@ -1,5 +1,5 @@
 [build]
-base = "plan2d"
+base = "app"
 publish = "dist"
 command = "npm ci && npm run build"
 

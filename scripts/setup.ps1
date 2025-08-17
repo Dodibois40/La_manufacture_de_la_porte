@@ -31,7 +31,7 @@ Assert-Cli -Cmd 'node' -InstallMsg 'Installe Node.js LTS depuis https://nodejs.o
 Assert-Cli -Cmd 'npm' -InstallMsg 'npm manquant. Réinstalle Node.js LTS.'
 
 $root = Resolve-Path (Join-Path $PSScriptRoot '..')
-$appName = 'plan2d'
+$appName = 'app'
 $appDir = Join-Path $root $appName
 
 if (-not (Test-Path $appDir)) {
