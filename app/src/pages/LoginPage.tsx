@@ -67,9 +67,6 @@ export default function LoginPage() {
           <div className="access-form">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label className="access-label">
-                  Votre code d'accès :
-                </label>
                 <input
                   type="text"
                   value={accessCode}
