@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import './index.css'
 
 export default function Home() {
-  const [goToConfig, setGoToConfig] = useState(false)
-  if (goToConfig) location.hash = '#config'
+  const handleGoToConfig = () => {
+    location.hash = '#config'
+  }
 
   return (
     <div className="home">
@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <div className="nav-actions">
           <a className="btn btn-ghost" href="#config">Aperçu configurateur</a>
-          <button className="btn btn-primary" onClick={() => setGoToConfig(true)}>Commencer mon projet</button>
+          <button className="btn btn-primary" onClick={handleGoToConfig}>Commencer mon projet</button>
         </div>
       </nav>
 
@@ -26,7 +26,7 @@ export default function Home() {
             </h1>
             <p className="hero-sub">Fabriquées au Pays Basque • Qualité atelier</p>
             <div className="hero-cta">
-              <button className="btn btn-primary" onClick={() => setGoToConfig(true)}>Personnaliser maintenant</button>
+              <button className="btn btn-primary" onClick={handleGoToConfig}>Personnaliser maintenant</button>
               <a className="btn btn-ghost" href="#config">Voir un exemple</a>
             </div>
             <div className="hero-badges">
