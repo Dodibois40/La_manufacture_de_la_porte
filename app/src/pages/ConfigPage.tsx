@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState } from 'react'
 import builtinSvgUrl from '/12.svg?url'
 import logoImg from '@assets/images/logo_transparent.png'
+import LogoutButton from '../components/LogoutButton'
 import { CJ_MIN, CJ_MAX } from '../utils/constants'
 import { TOKEN_SPECS, type WidthKey } from '../types'
 import { 
@@ -258,6 +259,7 @@ export default function ConfigPage() {
 
   return (
     <div className="app">
+      <LogoutButton />
       <header className="app-header">
         <img src={logoImg} alt="Logo" className="logo"/>
         <h1>La Manufacture de la porte intérieur</h1>

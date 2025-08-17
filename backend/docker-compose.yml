@@ -1,0 +1,63 @@
+# 🐳 Docker Compose - La Manufacture de la Porte Backend
+version: '3.8'
+
+services:
+  # 🗄️ Base de données PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: manufacture-porte-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: manufacture_porte
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./prisma/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - manufacture-network
+
+  # 🔧 API Backend (optionnel pour développement)
+  api:
+    build: .
+    container_name: manufacture-porte-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://postgres:password123@postgres:5432/manufacture_porte
+      JWT_SECRET: development-secret-key-change-in-production
+      FRONTEND_URL: http://localhost:5173
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - manufacture-network
+    command: npm run dev
+
+  # 📊 Interface d'administration PostgreSQL (optionnel)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: manufacture-porte-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@manufacture-porte.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - manufacture-network
+
+volumes:
+  postgres_data:
+
+networks:
+  manufacture-network:
+    driver: bridge

@@ -1,0 +1,163 @@
+// 🗄️ Schéma de Base de Données - La Manufacture de la Porte
+// Prisma ORM Schema pour PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 👤 Énumérations
+enum UserRole {
+  CLIENT    // Client particulier
+  PARTNER   // Partenaire professionnel
+  ADMIN     // Administrateur
+}
+
+enum ProjectStatus {
+  DRAFT         // Brouillon
+  QUOTED        // Devis envoyé
+  APPROVED      // Approuvé par le client
+  IN_PRODUCTION // En production
+  COMPLETED     // Terminé
+  CANCELLED     // Annulé
+}
+
+// 👥 Modèle Utilisateur
+model User {
+  id                Int       @id @default(autoincrement())
+  email             String    @unique
+  passwordHash      String    @map("password_hash")
+  displayName       String    @map("display_name")
+  role              UserRole  @default(CLIENT)
+  company           String?
+  phone             String?
+  address           String?
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  lastLogin         DateTime? @map("last_login")
+  isActive          Boolean   @default(true) @map("is_active")
+  emailVerified     Boolean   @default(false) @map("email_verified")
+  verificationToken String?   @map("verification_token")
+
+  // Relations
+  sessions       UserSession[]
+  configurations Configuration[]
+  projects       Project[]       @relation("PartnerProjects")
+  activityLogs   ActivityLog[]
+
+  @@map("users")
+}
+
+// 🎟️ Sessions Utilisateur (pour sécurité renforcée)
+model UserSession {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  tokenHash String   @map("token_hash")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_sessions")
+}
+
+// ⚙️ Configurations de Porte
+model Configuration {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  name        String
+  description String?
+  svgOriginal String?  @map("svg_original") @db.Text
+  svgModified String?  @map("svg_modified") @db.Text
+  parameters  Json     // Paramètres de cotation (OUVERTURE_L, PORTE_L, etc.)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  isPublic    Boolean  @default(false) @map("is_public")
+  isTemplate  Boolean  @default(false) @map("is_template")
+  tags        String[] // Pour recherche et catégorisation
+
+  // Relations
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectConfigurations ProjectConfiguration[]
+
+  @@map("configurations")
+}
+
+// 🏢 Projets (pour Partenaires)
+model Project {
+  id            Int           @id @default(autoincrement())
+  partnerId     Int           @map("partner_id")
+  clientName    String        @map("client_name")
+  clientEmail   String?       @map("client_email")
+  clientPhone   String?       @map("client_phone")
+  clientAddress String?       @map("client_address")
+  projectName   String        @map("project_name")
+  description   String?
+  status        ProjectStatus @default(DRAFT)
+  quotedPrice   Decimal?      @map("quoted_price") @db.Decimal(10, 2)
+  finalPrice    Decimal?      @map("final_price") @db.Decimal(10, 2)
+  notes         String?       @db.Text
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  deadline      DateTime?
+
+  // Relations
+  partner        User                   @relation("PartnerProjects", fields: [partnerId], references: [id])
+  configurations ProjectConfiguration[]
+
+  @@map("projects")
+}
+
+// 🔗 Relation Projets <-> Configurations
+model ProjectConfiguration {
+  id              Int      @id @default(autoincrement())
+  projectId       Int      @map("project_id")
+  configurationId Int      @map("configuration_id")
+  quantity        Int      @default(1)
+  unitPrice       Decimal? @map("unit_price") @db.Decimal(10, 2)
+  notes           String?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  // Relations
+  project       Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  configuration Configuration @relation(fields: [configurationId], references: [id], onDelete: Cascade)
+
+  @@map("project_configurations")
+}
+
+// 📊 Logs d'Activité (pour audit et analytics)
+model ActivityLog {
+  id           Int      @id @default(autoincrement())
+  userId       Int?     @map("user_id")
+  action       String   // "login", "create_config", "update_project", etc.
+  resourceType String?  @map("resource_type") // "configuration", "project", "user"
+  resourceId   Int?     @map("resource_id")
+  details      Json?    // Détails supplémentaires de l'action
+  ipAddress    String?  @map("ip_address")
+  userAgent    String?  @map("user_agent")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("activity_logs")
+}
+
+// 📧 Tokens de Réinitialisation de Mot de Passe
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  token     String   @unique
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  used      Boolean  @default(false)
+
+  @@map("password_reset_tokens")
+}

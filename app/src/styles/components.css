@@ -402,3 +402,36 @@ button:disabled {
     margin-bottom: 2rem;
   }
 }
+
+/* =================================
+   BOUTON DE DÉCONNEXION
+   ================================= */
+
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logout-button:hover {
+  background: rgba(218, 165, 32, 0.2);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+}
+
+.logout-button:active {
+  transform: scale(0.95);
+}

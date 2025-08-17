@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import logoImg from '@assets/images/logo_transparent.png'
+import LogoutButton from '../components/LogoutButton'
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false)
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <div className="home-gaming">
+      <LogoutButton />
       {/* Parallax Background */}
       <div className="parallax-bg" style={{
         transform: `translate(${mousePos.x * -0.01}px, ${mousePos.y * -0.01}px)`
