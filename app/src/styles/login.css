@@ -64,9 +64,9 @@
 
 /* 🖼️ Logo principal */
 .login-logo {
-  width: 200px;
+  width: 300px;
   height: auto;
-  filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.1));
+  filter: drop-shadow(0 0 30px rgba(218, 165, 32, 0.15));
   transition: all 0.4s ease;
 }
 
@@ -301,7 +301,7 @@
 /* 📱 Responsive */
 @media (max-width: 768px) {
   .login-logo {
-    width: 150px;
+    width: 220px;
   }
   
   .access-form {
@@ -323,7 +323,7 @@
 
 @media (max-width: 480px) {
   .login-logo {
-    width: 120px;
+    width: 180px;
   }
   
   .access-label {

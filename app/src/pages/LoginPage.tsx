@@ -60,12 +60,6 @@ export default function LoginPage() {
             alt="La Manufacture de la Porte" 
             className="login-logo"
           />
-          
-          {!showCodeInput && (
-            <div className="logo-hint">
-              <span>Cliquez sur le logo pour accéder</span>
-            </div>
-          )}
         </div>
 
         {/* Formulaire de code d'accès */}
