@@ -68,7 +68,9 @@ export default function Home() {
               Configurez votre porte,<br />
               <span className="accent-text" data-text="nous la façonnons">nous la façonnons</span>
             </h1>
-            <p className="sub-slogan">Fabrication artisanale • Pays Basque (64)</p>
+            <p className="sub-slogan typewriter">
+              <span className="typewriter-text">La Manufacture de la Porte • Fabrication artisanale • Pays Basque</span>
+            </p>
           </div>
           
           {/* Animation de porte qui se dessine */}

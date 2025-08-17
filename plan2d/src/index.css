@@ -232,10 +232,44 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 }
 
 .sub-slogan {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: var(--text-2);
   margin: 0;
   font-weight: 400;
+}
+
+/* Effet machine à écrire terminal */
+.typewriter {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  overflow: visible;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 5s steps(90, end) 0s forwards, 
+             blink-caret 0.75s step-end infinite 0s,
+             hide-caret 0s linear 5.5s forwards;
+  border-right: 2px solid var(--accent);
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: var(--accent); }
+  50% { border-color: transparent; }
+}
+
+@keyframes hide-caret {
+  to { border-color: transparent; }
 }
 
 /* Animation de porte qui se dessine */
@@ -484,16 +518,27 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
     height: 50px;
   }
   
-  .logo-text {
-    font-size: 16px;
+  .logo-img {
+    width: 40px;
+    height: 40px;
   }
   
   .main-slogan {
     font-size: clamp(2rem, 8vw, 3rem);
   }
   
+  .sub-slogan {
+    font-size: 1.1rem;
+  }
+  
   .central-hub {
     padding: 1rem;
+  }
+  
+  .door-animation-container {
+    width: 200px;
+    height: 400px;
+    margin: 1.5rem auto;
   }
   
   .gaming-badges {
@@ -509,7 +554,8 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
   }
   
   .gaming-menu {
-    min-width: 180px;
+    min-width: 160px;
+    top: 60px;
   }
 }
 
@@ -524,6 +570,30 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
   
   .sub-slogan {
     font-size: 1rem;
+  }
+  
+  .main-slogan {
+    font-size: clamp(1.8rem, 10vw, 2.5rem);
+  }
+  
+  .door-animation-container {
+    width: 160px;
+    height: 320px;
+    margin: 1rem auto;
+  }
+  
+  .logo-img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .typewriter {
+    letter-spacing: 0.02em;
+  }
+  
+  .gaming-menu {
+    min-width: 140px;
+    top: 50px;
   }
 }
 
