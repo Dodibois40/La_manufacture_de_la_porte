@@ -242,9 +242,11 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 .typewriter {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   overflow: visible;
-  white-space: nowrap;
+  white-space: normal;
   margin: 0;
   letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .typewriter-text {
@@ -509,77 +511,8 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
 /* Gaming Responsive */
 @media (max-width: 768px) {
   .logo-container {
-    top: 1rem;
-    left: 1rem;
-  }
-  
-  .gaming-logo {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .logo-img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .main-slogan {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-  
-  .sub-slogan {
-    font-size: 1.1rem;
-  }
-  
-  .central-hub {
-    padding: 1rem;
-  }
-  
-  .door-animation-container {
-    width: 200px;
-    height: 400px;
-    margin: 1.5rem auto;
-  }
-  
-  .gaming-badges {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .gaming-footer {
-    bottom: 1rem;
-    right: 1rem;
-    left: 1rem;
-    text-align: center;
-  }
-  
-  .gaming-menu {
-    min-width: 160px;
-    top: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cta-inner {
-    padding: 0.8rem 1.5rem;
-  }
-  
-  .cta-text {
-    font-size: 1rem;
-  }
-  
-  .sub-slogan {
-    font-size: 1rem;
-  }
-  
-  .main-slogan {
-    font-size: clamp(1.8rem, 10vw, 2.5rem);
-  }
-  
-  .door-animation-container {
-    width: 160px;
-    height: 320px;
-    margin: 1rem auto;
+    top: 0.5rem;
+    left: 0.5rem;
   }
   
   .logo-img {
@@ -587,13 +520,114 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: "JetBr
     height: 35px;
   }
   
-  .typewriter {
-    letter-spacing: 0.02em;
+  .main-slogan {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    margin-top: 3rem;
+  }
+  
+  .sub-slogan {
+    font-size: 1rem;
+  }
+  
+  .central-hub {
+    padding: 1rem;
+    padding-top: 2rem;
+  }
+  
+  .door-animation-container {
+    width: 180px;
+    height: 360px;
+    margin: 1rem auto;
+  }
+  
+  .gaming-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .gaming-footer {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    text-align: center;
+    font-size: 0.7rem;
   }
   
   .gaming-menu {
     min-width: 140px;
-    top: 50px;
+    top: 45px;
+  }
+  
+  .typewriter {
+    white-space: normal;
+  }
+  
+  .typewriter-text {
+    white-space: normal;
+    width: auto !important;
+    animation: typewriter 3s steps(60, end) 0s forwards;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    top: 0.3rem;
+    left: 0.3rem;
+  }
+  
+  .logo-img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .main-slogan {
+    font-size: clamp(1.5rem, 9vw, 2.2rem);
+    margin-top: 4rem;
+  }
+  
+  .sub-slogan {
+    font-size: 0.9rem;
+  }
+  
+  .central-hub {
+    padding: 0.5rem;
+    padding-top: 3rem;
+  }
+  
+  .cta-inner {
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .cta-text {
+    font-size: 0.9rem;
+  }
+  
+  .door-animation-container {
+    width: 140px;
+    height: 280px;
+    margin: 0.8rem auto;
+  }
+  
+  .typewriter {
+    letter-spacing: 0.02em;
+    white-space: normal;
+  }
+  
+  .typewriter-text {
+    white-space: normal;
+    width: auto !important;
+    animation: none;
+    border-right: none;
+  }
+  
+  .gaming-menu {
+    min-width: 120px;
+    top: 35px;
+  }
+  
+  .gaming-footer {
+    font-size: 0.6rem;
   }
 }
 
