@@ -84,23 +84,23 @@ export default function WelcomePage() {
             </p>
           </div>
 
-          {/* Animation de porte néon doré luxe */}
-          <div className="door-neon-container">
+          {/* Animation de porte - lignes ultra fines */}
+          <div className="door-container">
             <svg viewBox="0 0 260 500">
               {/* Montant gauche */}
-              <rect className="neon-line montant-left" x="20" y="30" width="15" height="450" />
+              <rect className="line-thin montant-left" x="20" y="30" width="15" height="450" />
               
               {/* Montant droit */}
-              <rect className="neon-line montant-right" x="225" y="30" width="15" height="450" />
+              <rect className="line-thin montant-right" x="225" y="30" width="15" height="450" />
               
               {/* Traverse haute */}
-              <rect className="neon-line traverse-top" x="35" y="30" width="190" height="15" />
+              <rect className="line-thin traverse-top" x="35" y="30" width="190" height="15" />
               
               {/* Porte */}
-              <rect className="neon-line door" x="38" y="48" width="184" height="429" />
+              <rect className="line-thin door" x="38" y="48" width="184" height="429" />
               
               {/* Poignée */}
-              <line className="neon-line handle" x1="55" y1="260" x2="75" y2="260" />
+              <line className="line-thin handle" x1="55" y1="260" x2="75" y2="260" />
             </svg>
           </div>
 
