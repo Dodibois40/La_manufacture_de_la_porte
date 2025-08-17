@@ -114,10 +114,25 @@ Configuration et commande en ligne
 - Transitions smooth (0.3s)
 - Effets de hover interactifs
 
-### ✅ Design System
-- Couleurs gaming : #1a1a1a + #3A6FD0
+### 🎨 Options Couleurs Premium
+
+#### Option 1 - Bronze Texturé
+- **Principal** : `#CD7F32` (bronze classique)
+- **Glow** : `rgba(205, 127, 50, 0.3)`
+- **Accent clair** : `#E6A85C` (bronze doré)
+
+#### Option 2 - Or Texturé  
+- **Principal** : `#D4AF37` (or antique)
+- **Glow** : `rgba(212, 175, 55, 0.3)`
+- **Accent clair** : `#F4D03F` (or brillant)
+
+### ✅ Design System Bronze Implémenté
+- **Couleurs gaming** : #1a1a1a + #CD7F32 (bronze) ✅
+- **Accent clair** : #E6A85C (bronze doré) ✅
+- **Effets glow** : rgba(205, 127, 50, 0.3) ✅
+- **Shimmer** : rgba(230, 168, 92, 0.2) ✅
 - Typographie moderne (Plus Jakarta Sans)
-- Bouton CTA avec effet glow
+- Bouton CTA avec effet glow bronze
 - Badges flottants stylisés
 
 ### ✅ Responsive Design
