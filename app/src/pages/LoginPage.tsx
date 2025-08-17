@@ -72,7 +72,7 @@ export default function LoginPage() {
                   value={accessCode}
                   onChange={handleCodeChange}
                   className={`access-input ${error ? 'error' : ''} ${isLoading ? 'loading' : ''}`}
-                  placeholder="Entrez votre code et appuyez sur Entrée"
+                  placeholder="Entrez votre code"
                   autoFocus
                   maxLength={20}
                   disabled={isLoading}
