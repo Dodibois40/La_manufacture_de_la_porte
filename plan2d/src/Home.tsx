@@ -29,9 +29,7 @@ export default function Home() {
       <div className="logo-container" 
            onMouseEnter={() => setShowMenu(true)}
            onMouseLeave={() => setShowMenu(false)}>
-        <div className="gaming-logo">
-          <img src={logoImg} alt="La Manufacture de la Porte" className="logo-img" />
-        </div>
+        <img src={logoImg} alt="La Manufacture de la Porte" className="logo-img" />
         
         {/* Gaming Menu */}
         <nav className={`gaming-menu ${showMenu ? 'active' : ''}`}>
@@ -40,11 +38,23 @@ export default function Home() {
             <span>Configurateur</span>
           </div>
           <div className="menu-item">
-            <span className="menu-icon">📋</span>
+            <span className="menu-icon">◉</span>
             <span>Catalogue</span>
           </div>
           <div className="menu-item">
-            <span className="menu-icon">📞</span>
+            <span className="menu-icon">◈</span>
+            <span>Réalisation</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◇</span>
+            <span>Garantie</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◎</span>
+            <span>Qui sommes nous</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◐</span>
             <span>Contact</span>
           </div>
         </nav>
@@ -78,7 +88,7 @@ export default function Home() {
 
       {/* Subtle footer */}
       <div className="gaming-footer">
-        <span>© La Manufacture de la Porte</span>
+        <span>© La Manufacture de la Porte 2025</span>
       </div>
     </div>
   )
