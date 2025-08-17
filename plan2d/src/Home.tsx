@@ -1,6 +1,6 @@
 import './index.css'
 import { useState, useEffect } from 'react'
-import logoSvg from './assets/logo.svg'
+import logoImg from '../logo_transparent.png'
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false)
@@ -30,7 +30,7 @@ export default function Home() {
            onMouseEnter={() => setShowMenu(true)}
            onMouseLeave={() => setShowMenu(false)}>
         <div className="gaming-logo">
-          <img src={logoSvg} alt="La Manufacture de la Porte" className="logo-svg" />
+          <img src={logoImg} alt="La Manufacture de la Porte" className="logo-img" />
         </div>
         
         {/* Gaming Menu */}
