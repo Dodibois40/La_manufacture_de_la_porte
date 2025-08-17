@@ -71,6 +71,26 @@ export default function Home() {
             <p className="sub-slogan">Fabrication artisanale • Pays Basque (64)</p>
           </div>
           
+          {/* Animation de porte qui se dessine */}
+          <div className="door-animation-container">
+            <svg viewBox="0 0 260 500">
+              {/* Montant gauche */}
+              <rect className="draw-line montant-left" x="20" y="30" width="15" height="450" />
+              
+              {/* Montant droit */}
+              <rect className="draw-line montant-right" x="225" y="30" width="15" height="450" />
+              
+              {/* Traverse haute */}
+              <rect className="draw-line traverse-top" x="35" y="30" width="190" height="15" />
+              
+              {/* Porte */}
+              <rect className="draw-line door" x="38" y="48" width="184" height="429" />
+              
+              {/* Poignée */}
+              <line className="draw-line handle" x1="55" y1="260" x2="75" y2="260" />
+            </svg>
+          </div>
+          
           <button className="cta-gaming" onClick={handleGoToConfig}>
             <div className="cta-inner">
               <span className="cta-text">Configurer ma porte</span>
