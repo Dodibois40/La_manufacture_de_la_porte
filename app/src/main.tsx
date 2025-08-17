@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom/client'
 import ConfigPage from './pages/ConfigPage.tsx'
 import Home from './pages/Home.tsx'
 import LoginPage from './pages/LoginPage.tsx'
+import WelcomePage from './pages/WelcomePage.tsx'
+import TutorialPage from './pages/TutorialPage.tsx'
 import { hasAccess } from './utils/auth'
 import './styles/index.css'
 import './styles/login.css'
+import './styles/welcome.css'
 
 function Root() {
   const [hash, setHash] = useState<string>(location.hash)
@@ -30,8 +33,13 @@ function Root() {
   }
 
   // Si accès accordé, router normalement
+  if (hash === '#welcome') return <WelcomePage />
+  if (hash === '#tutorial') return <TutorialPage />
   if (hash === '#config') return <ConfigPage />
-  return <Home />
+  if (hash === '#home' || hash === '') return <Home />
+  
+  // Par défaut, aller à la page de bienvenue après connexion
+  return <WelcomePage />
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

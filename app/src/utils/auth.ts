@@ -1,7 +1,11 @@
 // 🔐 Utilitaires d'Authentification Simple - La Manufacture de la Porte
 
-// Code d'accès valide (à configurer selon vos besoins)
-const VALID_ACCESS_CODE = 'MANUFACTURE2025'
+// Codes d'accès valides avec informations utilisateur
+const ACCESS_CODES = {
+  'MANUFACTURE2025': { name: 'Visiteur', role: 'guest' },
+  'DORIAN': { name: 'Dorian', role: 'admin' },
+  'THIBAUD': { name: 'Thibaud', role: 'partner' }
+}
 
 // Durée de validité de l'accès (24 heures)
 const ACCESS_DURATION = 24 * 60 * 60 * 1000
@@ -44,9 +48,31 @@ export function clearAccess(): void {
   localStorage.removeItem('manufacture_access_time')
 }
 
-// 🔐 Vérifier le code d'accès
-export function verifyAccessCode(code: string): boolean {
-  return code.toUpperCase().trim() === VALID_ACCESS_CODE
+// 🔐 Vérifier le code d'accès et retourner les infos utilisateur
+export function verifyAccessCode(code: string): { valid: boolean; user?: { name: string; role: string } } {
+  const upperCode = code.toUpperCase().trim()
+  const userInfo = ACCESS_CODES[upperCode as keyof typeof ACCESS_CODES]
+  
+  if (userInfo) {
+    return { valid: true, user: userInfo }
+  }
+  
+  return { valid: false }
+}
+
+// 🔍 Obtenir les informations de l'utilisateur connecté
+export function getCurrentUser(): { name: string; role: string } | null {
+  try {
+    const userInfo = localStorage.getItem('manufacture_user')
+    return userInfo ? JSON.parse(userInfo) : null
+  } catch (error) {
+    return null
+  }
+}
+
+// 👤 Sauvegarder les informations utilisateur
+export function saveUserInfo(user: { name: string; role: string }): void {
+  localStorage.setItem('manufacture_user', JSON.stringify(user))
 }
 
 // ⏰ Obtenir le temps restant avant expiration (en millisecondes)

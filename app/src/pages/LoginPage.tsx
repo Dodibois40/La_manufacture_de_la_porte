@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import logoImg from '@assets/images/logo_transparent.png'
+import { verifyAccessCode, saveUserInfo } from '../utils/auth'
 
 export default function LoginPage() {
   const [showCodeInput, setShowCodeInput] = useState(false)
@@ -7,8 +8,7 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  // Code d'accès temporaire (à configurer)
-  const VALID_ACCESS_CODE = 'MANUFACTURE2025'
+
 
   const handleLogoClick = () => {
     setShowCodeInput(true)
@@ -20,15 +20,18 @@ export default function LoginPage() {
     setIsLoading(true)
     setError('')
 
-    // Simulation d'une vérification
+    // Vérification du code d'accès
     setTimeout(() => {
-      if (accessCode.toUpperCase() === VALID_ACCESS_CODE) {
-        // Sauvegarder l'accès dans le localStorage
+      const result = verifyAccessCode(accessCode)
+      
+      if (result.valid && result.user) {
+        // Sauvegarder l'accès et les infos utilisateur
         localStorage.setItem('manufacture_access', 'granted')
         localStorage.setItem('manufacture_access_time', Date.now().toString())
+        saveUserInfo(result.user)
         
-        // Rediriger vers la page d'accueil
-        window.location.hash = ''
+        // Rediriger vers la page de bienvenue
+        window.location.hash = '#welcome'
         window.location.reload()
       } else {
         setError('Code d\'accès incorrect')
