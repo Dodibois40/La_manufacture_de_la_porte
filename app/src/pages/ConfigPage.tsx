@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState } from 'react'
-import builtinSvgUrl from '@assets/svg/12.svg?url'
+import builtinSvgUrl from '/12.svg?url'
 import { LOGO_URL, CJ_MIN, CJ_MAX } from '../utils/constants'
 import { TOKEN_SPECS, type WidthKey } from '../types'
 import { 
