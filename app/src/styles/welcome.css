@@ -271,7 +271,7 @@
     0 0 40px rgba(100, 255, 150, 0.1);
 }
 
-/* 🚪✨ Animation Porte Néon Bronze */
+/* 🚪✨ Animation Porte Néon Doré Luxe */
 .door-neon-container {
   width: 200px;
   height: 380px;
@@ -287,7 +287,7 @@
 }
 
 .door-neon-container svg {
-  filter: drop-shadow(0 0 8px rgba(201, 169, 97, 0.08));
+  filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.12));
   width: 100%;
   height: 100%;
 }
@@ -296,12 +296,12 @@
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
   animation: neonDraw 5s ease-out 1.5s forwards;
-  stroke: #c9a961;
-  stroke-width: 1;
+  stroke: #daa520;
+  stroke-width: 1.2;
   fill: none;
-  filter: drop-shadow(0 0 2px #ddb678) 
-          drop-shadow(0 0 4px rgba(184, 134, 11, 0.4));
-  opacity: 0.95;
+  filter: drop-shadow(0 0 3px #ffd700) 
+          drop-shadow(0 0 6px rgba(218, 165, 32, 0.5));
+  opacity: 1;
 }
 
 @keyframes neonDraw {
@@ -310,15 +310,15 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.95;
+    opacity: 1;
   }
   100% {
     stroke-dashoffset: 0;
-    opacity: 0.95;
+    opacity: 1;
   }
 }
 
-/* Délais d'animation pour chaque élément */
+/* Timing des animations */
 .door-neon-container .montant-left { 
   animation-delay: 1.5s; 
 }
@@ -333,10 +333,15 @@
 }
 .door-neon-container .handle { 
   animation-delay: 3.5s; 
-  stroke-width: 1.5;
-  stroke: #ddb678;
-  filter: drop-shadow(0 0 2px #ddb678)
-          drop-shadow(0 0 4px rgba(184, 134, 11, 0.4));
+  stroke-width: 1.8;
+  stroke: #daa520;
+  filter: drop-shadow(0 0 3px #ffd700)
+          drop-shadow(0 0 6px rgba(218, 165, 32, 0.5));
+}
+
+/* Pour animation en boucle (optionnel) */
+.door-neon-container.loop .neon-line {
+  animation: neonDraw 5s ease-out infinite;
 }
 
 /* 📱 Footer */
