@@ -1,133 +1,85 @@
 import './index.css'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [showMenu, setShowMenu] = useState(false)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
   const handleGoToConfig = () => {
     location.hash = '#config'
   }
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
-    <div className="home">
-      <nav className="nav container">
-        <div className="brand">
-          <div className="brand-mark" />
-          <span>LA MANUFACTURE DE LA PORTE</span>
+    <div className="home-gaming">
+      {/* Parallax Background */}
+      <div className="parallax-bg" style={{
+        transform: `translate(${mousePos.x * -0.01}px, ${mousePos.y * -0.01}px)`
+      }}></div>
+      
+      {/* Logo with hover menu */}
+      <div className="logo-container" 
+           onMouseEnter={() => setShowMenu(true)}
+           onMouseLeave={() => setShowMenu(false)}>
+        <div className="gaming-logo">
+          <div className="logo-mark"></div>
+          <span className="logo-text">LM</span>
         </div>
-        <div className="nav-actions">
-          <a className="btn btn-ghost" href="#config">Aperçu configurateur</a>
-          <button className="btn btn-primary" onClick={handleGoToConfig}>Commencer mon projet</button>
-        </div>
-      </nav>
+        
+        {/* Gaming Menu */}
+        <nav className={`gaming-menu ${showMenu ? 'active' : ''}`}>
+          <div className="menu-item" onClick={handleGoToConfig}>
+            <span className="menu-icon">⚙</span>
+            <span>Configurateur</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">📋</span>
+            <span>Catalogue</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">📞</span>
+            <span>Contact</span>
+          </div>
+        </nav>
+      </div>
 
-      <header className="hero">
-        <div className="container hero-inner">
-          <div className="hero-left">
-            <h1>
-              Portes toute hauteur<br />sur mesure
+      {/* Central Gaming Interface */}
+      <div className="gaming-interface">
+        <div className="central-hub">
+          <div className="slogan-container">
+            <h1 className="main-slogan">
+              Configurez votre porte,<br />
+              <span className="accent-text">nous la façonnons</span>
             </h1>
-            <p className="hero-sub">Fabriquées au Pays Basque • Qualité atelier</p>
-            <div className="hero-cta">
-              <button className="btn btn-primary" onClick={handleGoToConfig}>Personnaliser maintenant</button>
-              <a className="btn btn-ghost" href="#config">Voir un exemple</a>
+            <p className="sub-slogan">Fabrication artisanale • Pays Basque (64)</p>
+          </div>
+          
+          <button className="cta-gaming" onClick={handleGoToConfig}>
+            <div className="cta-inner">
+              <span className="cta-text">Configurer ma porte</span>
+              <div className="cta-glow"></div>
             </div>
-            <div className="hero-badges">
-              <span>Placage de qualité</span>
-              <span>Finitions premium</span>
-              <span>Délais maîtrisés</span>
-            </div>
-          </div>
-          <div className="hero-right">
-            <div className="door-card">
-              <div className="door-slab" />
-              <div className="door-info">
-                <div>
-                  <strong>2100</strong>
-                  <span>hauteur</span>
-                </div>
-                <div>
-                  <strong>900</strong>
-                  <span>largeur</span>
-                </div>
-              </div>
-            </div>
+          </button>
+          
+          <div className="gaming-badges">
+            <div className="badge">Sur mesure</div>
+            <div className="badge">Bois noble</div>
+            <div className="badge">Artisanal</div>
           </div>
         </div>
-      </header>
+      </div>
 
-      <section className="features container">
-        <div className="feature">
-          <div className="ico" />
-          <h3>Fabrication locale</h3>
-          <p>Assemblage et contrôle dans notre atelier, traçabilité totale.</p>
-        </div>
-        <div className="feature">
-          <div className="ico" />
-          <h3>Savoir‑faire artisanal</h3>
-          <p>Usinage précis, ajustements fins et finitions haut de gamme.</p>
-        </div>
-        <div className="feature">
-          <div className="ico" />
-          <h3>Configurateur 2D</h3>
-          <p>Vos cotes en direct, export SVG modifiable, prêt pour la prod.</p>
-        </div>
-      </section>
-
-      <section className="materials container">
-        <div className="section-head">
-          <h2>Matières & finitions</h2>
-          <p>Une sélection durable aux teintes intemporelles.</p>
-        </div>
-        <div className="swatches">
-          <div className="swatch-card">
-            <div className="swatch-chip" style={{ background:'#A8845A' }} />
-            <h4>Chêne</h4>
-          </div>
-          <div className="swatch-card">
-            <div className="swatch-chip" style={{ background:'#5C4436' }} />
-            <h4>Noyer</h4>
-          </div>
-          <div className="swatch-card">
-            <div className="swatch-chip" style={{ background:'#8C6A3F' }} />
-            <h4>Plaqué</h4>
-          </div>
-          <div className="swatch-card">
-            <div className="swatch-chip" style={{ background:'#B59A7A' }} />
-            <h4>Chêne clair</h4>
-          </div>
-        </div>
-      </section>
-
-      <section className="steps container">
-        <div className="step">
-          <span className="step-num">01</span>
-          <div>
-            <h3>Personnalisez</h3>
-            <p>Renseignez vos cotes et options en temps réel.</p>
-          </div>
-        </div>
-        <div className="step">
-          <span className="step-num">02</span>
-          <div>
-            <h3>Validez</h3>
-            <p>Exportez un plan SVG pour validation et archivage.</p>
-          </div>
-        </div>
-        <div className="step">
-          <span className="step-num">03</span>
-          <div>
-            <h3>Nous fabriquons</h3>
-            <p>Votre porte est produite et contrôlée dans notre atelier.</p>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer container">
-        <div className="foot-left">
-          <span className="muted">© La Manufacture de la porte</span>
-        </div>
-        <div className="foot-right">
-          <a href="#config" className="btn btn-primary">Lancer le configurateur</a>
-        </div>
-      </footer>
+      {/* Subtle footer */}
+      <div className="gaming-footer">
+        <span>© La Manufacture de la Porte</span>
+      </div>
     </div>
   )
 }
