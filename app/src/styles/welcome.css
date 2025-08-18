@@ -295,7 +295,7 @@
 .line-thin {
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
-  animation: drawLine 5s ease-out 1.5s forwards;
+  animation: drawLine 8s ease-out 1.5s forwards;
   stroke: #d4af37;
   stroke-width: 0.3;
   fill: none;
@@ -310,25 +310,25 @@
 
 /* Timing d'animation */
 .door-container .montant-left { 
-  animation-delay: 1.5s; 
-}
-.door-container .montant-right { 
   animation-delay: 2s; 
 }
+.door-container .montant-right { 
+  animation-delay: 3.5s; 
+}
 .door-container .traverse-top { 
-  animation-delay: 2.5s; 
+  animation-delay: 5s; 
 }
 .door-container .door { 
-  animation-delay: 3s; 
+  animation-delay: 6.5s; 
 }
 .door-container .handle { 
-  animation-delay: 3.5s; 
+  animation-delay: 8s; 
   stroke-width: 0.5;
 }
 
 /* Pour animation en boucle (optionnel) */
 .door-container.loop .line-thin {
-  animation: drawLine 5s ease-out infinite;
+  animation: drawLine 8s ease-out infinite;
 }
 
 /* 📱 Footer */
