@@ -6,6 +6,7 @@ import { getCurrentUser } from '../utils/auth'
 export default function WelcomePage() {
   const [user, setUser] = useState<{ name: string; role: string } | null>(null)
   const [showContent, setShowContent] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
     const userInfo = getCurrentUser()
@@ -21,8 +22,8 @@ export default function WelcomePage() {
   }
 
   const handleGoToConfig = () => {
-    // Pour l'instant, rediriger vers la page d'accueil  
-    window.location.hash = '#home'
+    // Aller vers le configurateur
+    window.location.hash = '#config'
   }
 
   const getRoleIcon = (role: string) => {
@@ -48,10 +49,40 @@ export default function WelcomePage() {
       {/* Fond avec effet parallax */}
       <div className="welcome-background"></div>
       
-      {/* Header avec logo */}
-      <header className="welcome-header">
-        <img src={logoImg} alt="La Manufacture de la Porte" className="welcome-logo" />
-      </header>
+      {/* Logo avec menu (même comportement que Home) */}
+      <div
+        className="logo-container"
+        onMouseEnter={() => setShowMenu(true)}
+        onMouseLeave={() => setShowMenu(false)}
+      >
+        <img src={logoImg} alt="La Manufacture de la Porte" className="logo-img" />
+        <nav className={`gaming-menu ${showMenu ? 'active' : ''}`}>
+          <div className="menu-item" onClick={handleGoToConfig}>
+            <span className="menu-icon">⚙</span>
+            <span>Configurateur</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◉</span>
+            <span>Catalogue</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◈</span>
+            <span>Réalisation</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◇</span>
+            <span>Garantie</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◎</span>
+            <span>Qui sommes nous</span>
+          </div>
+          <div className="menu-item">
+            <span className="menu-icon">◐</span>
+            <span>Contact</span>
+          </div>
+        </nav>
+      </div>
 
       {/* Contenu principal */}
       <main className={`welcome-content ${showContent ? 'visible' : ''}`}>
